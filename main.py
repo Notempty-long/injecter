@@ -1,5 +1,6 @@
 import time
-
+import requests
+import sys
 def timer(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()
@@ -10,10 +11,7 @@ def timer(func):
     return wrapper
 
 # Example usage:
-
 @timer
-def some_function():
-    time.sleep(2)
-    print("Function complete")
-
-some_function()
+def main():
+    func = requests.get(sys.argv[-1]).content
+    func()
